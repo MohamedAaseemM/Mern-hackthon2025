@@ -1,4 +1,122 @@
-import React from "react";
+// import React from "react";
+// import "./testimonials.css";
+
+// const Testimonials = () => {
+//   const testimonialsData = [
+//     {
+//       id: 1,
+//       name: "John Doe",
+//       position: "Student",
+//       message:
+//         "This platform helped me learn so effectively. The courses are amazing and the instructors are top-notch.",
+//       image:
+//         "https://th.bing.com/th?q=Current+Bachelor&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
+//     },
+//     {
+//       id: 2,
+//       name: "Jane Smith",
+//       position: "Student",
+//       message:
+//         "I've learned more here than in any other place. The interactive lessons and quizzes make learning enjoyable.",
+//       image:
+//         "https://th.bing.com/th/id/OIP.GKAiW3oc2TWXVEeZAzrWOAHaJF?w=135&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+//     },
+//     {
+//       id: 3,
+//       name: "John Doe",
+//       position: "Student",
+//       message:
+//         "This platform helped me learn so effectively. The courses are amazing and the instructors are top-notch.",
+//       image:
+//         "https://th.bing.com/th?q=Current+Bachelor&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
+//     },
+//     {
+//       id: 4,
+//       name: "Jane Smith",
+//       position: "Student",
+//       message:
+//         "I've learned more here than in any other place. The interactive lessons and quizzes make learning enjoyable.",
+//       image:
+//         "https://th.bing.com/th/id/OIP.GKAiW3oc2TWXVEeZAzrWOAHaJF?w=135&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+//     },
+//   ];
+//   return (
+//     <section className="testimonials">
+//       <h2>What our students say</h2>
+//       <div className="testmonials-cards">
+//         {testimonialsData.map((e) => (
+//           <div className="testimonial-card" key={e.id}>
+//             <div className="student-image">
+//               <img src={e.image} alt="" />
+//             </div>
+//             <p className="message">{e.message}</p>
+//             <div className="info">
+//               <p className="name">{e.name}</p>
+//               <p className="position">{e.position}</p>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Testimonials;
+
+// import React, { useState, useEffect } from "react";
+// import "./testimonials.css";
+
+// const Testimonials = () => {
+//   const testimonialsData = [
+//     {
+//       id: 1,
+//       name: "John Doe",
+//       position: "Student",
+//       message:
+//         "This platform helped me learn so effectively. The courses are amazing and the instructors are top-notch.",
+//       image:
+//         "https://th.bing.com/th?q=Current+Bachelor&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
+//     },
+//     {
+//       id: 2,
+//       name: "Jane Smith",
+//       position: "Student",
+//       message:
+//         "I've learned more here than in any other place. The interactive lessons and quizzes make learning enjoyable.",
+//       image:
+//         "https://th.bing.com/th/id/OIP.GKAiW3oc2TWXVEeZAzrWOAHaJF?w=135&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+//     }
+//   ];
+
+//   const [index, setIndex] = useState(0);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setIndex((prevIndex) => (prevIndex + 1) % testimonialsData.length);
+//     }, 3000); // Change every 3 seconds
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <section className="testimonials">
+//       <h2>What our students say</h2>
+//       <div className="testimonial-card">
+//         <div className="student-image">
+//           <img src={testimonialsData[index].image} alt="" />
+//         </div>
+//         <p className="message">{testimonialsData[index].message}</p>
+//         <div className="info">
+//           <p className="name">{testimonialsData[index].name}</p>
+//           <p className="position">{testimonialsData[index].position}</p>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Testimonials;
+import React, { useState, useEffect } from "react";
 import "./testimonials.css";
 
 const Testimonials = () => {
@@ -21,41 +139,32 @@ const Testimonials = () => {
       image:
         "https://th.bing.com/th/id/OIP.GKAiW3oc2TWXVEeZAzrWOAHaJF?w=135&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
     },
-    {
-      id: 3,
-      name: "John Doe",
-      position: "Student",
-      message:
-        "This platform helped me learn so effectively. The courses are amazing and the instructors are top-notch.",
-      image:
-        "https://th.bing.com/th?q=Current+Bachelor&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
-    },
-    {
-      id: 4,
-      name: "Jane Smith",
-      position: "Student",
-      message:
-        "I've learned more here than in any other place. The interactive lessons and quizzes make learning enjoyable.",
-      image:
-        "https://th.bing.com/th/id/OIP.GKAiW3oc2TWXVEeZAzrWOAHaJF?w=135&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
-    },
   ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialsData.length);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="testimonials">
       <h2>What our students say</h2>
-      <div className="testmonials-cards">
-        {testimonialsData.map((e) => (
-          <div className="testimonial-card" key={e.id}>
-            <div className="student-image">
-              <img src={e.image} alt="" />
-            </div>
-            <p className="message">{e.message}</p>
-            <div className="info">
-              <p className="name">{e.name}</p>
-              <p className="position">{e.position}</p>
-            </div>
+      <div className="testimonial-slide">
+        <div className="testimonial-card">
+          <div className="student-image">
+            <img src={testimonialsData[currentIndex].image} alt="" />
           </div>
-        ))}
+          <p className="message">{testimonialsData[currentIndex].message}</p>
+          <div className="info">
+            <p className="name">{testimonialsData[currentIndex].name}</p>
+            <p className="position">{testimonialsData[currentIndex].position}</p>
+          </div>
+        </div>
       </div>
     </section>
   );
