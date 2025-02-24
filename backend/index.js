@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { connectDb } from "./database/db.js";
 import Razorpay from "razorpay";
 import cors from "cors";
+import path from "path";
 
 dotenv.config();
 
@@ -35,7 +36,16 @@ app.use("/api", userRoutes);
 app.use("/api", courseRoutes);
 app.use("/api", adminRoutes);
 
+const __dirname = path.resolve();
+
+if(process.env.NODE_ENV === "production")
+{
+    // app.use(express.static(path.join(__dirname,"/frontend/build")));
+    app.get("*", (req,res) => res.sendFile(path.resolve(__dirname,"frontend","index.html")) );
+}
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
   connectDb();
 });
+

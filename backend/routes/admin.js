@@ -8,6 +8,9 @@ import {
   getAllStats,
   getAllUser,
   updateRole,
+  getAllCourses,
+  getAllLectures,
+  getAllUsers
 } from "../controllers/admin.js";
 import { uploadFiles } from "../middlewares/multer.js";
 
@@ -20,5 +23,10 @@ router.delete("/lecture/:id", isAuth, isAdmin, deleteLecture);
 router.get("/stats", isAuth, isAdmin, getAllStats);
 router.put("/user/:id", isAuth, updateRole);
 router.get("/users", isAuth, isAdmin, getAllUser);
+
+router.get("/courses", isAuth, isAdmin, getAllCourses);
+router.get("/lectures", isAuth, isAdmin, getAllLectures);
+router.get("/users", isAuth, isAdmin, getAllUsers);
+
 
 export default router;

@@ -141,3 +141,41 @@ export const updateRole = TryCatch(async (req, res) => {
     });
   }
 });
+
+export const getAllCourses = TryCatch(async (req, res) => {
+  const courses = await Courses.find().populate("createdBy", "name email"); // Optional: Populate creator details
+
+  res.status(200).json({
+    success: true,
+    courses,
+  });
+});
+
+export const getAllCoursessearch = TryCatch(async (req, res) => {
+  const { search, category } = req.query;
+  
+  const filter = {};
+  if (search) filter.title = { $regex: search, $options: "i" };
+  if (category) filter.category = category;
+
+  const courses = await Courses.find(filter).populate("createdBy", "name email");
+  res.status(200).json({ success: true, courses });
+});
+export const getAllLectures = TryCatch(async (req, res) => {
+  const lectures = await Lecture.find().populate("course", "title"); // Shows course title
+
+  res.status(200).json({
+    success: true,
+    totalLectures: lectures.length,
+    lectures,
+  });
+});
+export const getAllUsers = TryCatch(async (req, res) => {
+  const users = await User.find({ _id: { $ne: req.user._id } }).select("-password");
+
+  res.status(200).json({
+    success: true,
+    totalUsers: users.length,
+    users,
+  });
+});
