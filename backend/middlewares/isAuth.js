@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 import { User } from "../models/User.js";
-
 export const isAuth = async (req, res, next) => {
   try {
     const token = req.headers.token;
@@ -21,7 +20,6 @@ export const isAuth = async (req, res, next) => {
     });
   }
 };
-
 export const isAdmin = (req, res, next) => {
   try {
     if (req.user.role !== "admin")
@@ -36,3 +34,4 @@ export const isAdmin = (req, res, next) => {
     });
   }
 };
+

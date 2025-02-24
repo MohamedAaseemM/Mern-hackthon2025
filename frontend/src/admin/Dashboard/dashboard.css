@@ -1,4 +1,4 @@
-.main-content {
+/* .main-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,4 +17,93 @@
       background-color: #432456;
     }
   }
+} */
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dynamic Grid */
+  gap: 15px; 
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background: linear-gradient(to right, #2c2c2c, #4f4f4f); /* Grey gradient */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+
+.box {
+  background: linear-gradient(to bottom, #3a3a3a, #1f1f1f); /* Dark Grey */
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to bottom, #4f4f4f, #2c2c2c);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    grid-template-columns: repeat(1, 1fr); /* One column for mobile */
+  }
+}
+
+.dashboard-container {
+  display: flex;
+  align-items: flex-start; /* Align items at the top */
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap; /* Prevent breaking */
+  
+}
+
+
+.stats-container {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.box {
+  background: #2c3e50;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.table-container {
+  float: right;
+  width: 60%;
+  min-width: 500px; /* Prevent shrinking */
+  max-width: 100%;
+  overflow-x: auto; /* Enable horizontal scroll if needed */
+}
+  
+
+.table {
+  width: 100%;
+  table-layout: fixed; /* Ensures columns don’t resize */
+}
+
+.table th,
+.table td {
+  word-wrap: break-word; /* Prevents content overflow */
+  text-align: center;
+}
+
+

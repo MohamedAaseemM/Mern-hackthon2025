@@ -155,7 +155,7 @@ const Lecture = ({ user }) => {
         }
       );
       console.log(data.message);
-      fetchProgress();
+      await fetchProgress();
     } catch (error) {
       console.log(error);
     }
@@ -175,7 +175,7 @@ const Lecture = ({ user }) => {
         <>
           <div className="progress">
             Lecture completed - {completedLec} out of {lectLength} <br />
-            <progress value={completed} max={100}></progress> {completed} %
+            <progress value={completed || 0} max={100}></progress> {completed ? completed.toFixed(2) : 0} %
           </div>
           <div className="lecture-page">
             <div className="left">

@@ -22,7 +22,7 @@ import AdminCourses from "./admin/Courses/AdminCourses";
 import AdminUsers from "./admin/Users/AdminUsers";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import ResetPassword from "./pages/auth/ResetPassword";
-
+import AdminLogin from "./pages/auth/AdminLogin";
 const App = () => {
   const { isAuth, user, loading } = UserData();
   return (
@@ -41,6 +41,7 @@ const App = () => {
               element={isAuth ? <Account user={user} /> : <Login />}
             />
             <Route path="/login" element={isAuth ? <Home /> : <Login />} />
+            <Route path="/adminLogin" element={<AdminLogin />} />
             <Route
               path="/register"
               element={isAuth ? <Home /> : <Register />}
