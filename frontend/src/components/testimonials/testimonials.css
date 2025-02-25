@@ -65,23 +65,31 @@
   }
 } */
 .testimonials {
+  background: linear-gradient(to right,#f2f2f9 , #e9f5f5);
   text-align: center;
   padding: 20px;
 }
 
 .testimonial-card {
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: opacity 0.5s ease-in-out;
+  padding: 25px;
+  border-radius: 13px;
+  box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 1s ease-in-out;
 }
 
 .student-image img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 70%;
+
+  max-width: 100%;  /* Ensures the image never overflows its container */
+    /* Maintains aspect ratio */
+   /* Removes extra space under the image */
+  object-fit: cover;  /* Ensures the image fills the container without stretching */
+  background-size: cover;
+  
 }
 
 .message {

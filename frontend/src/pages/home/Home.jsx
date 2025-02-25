@@ -54,56 +54,8 @@
 // };
 
 // export default Home;
-// import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import "./home.css";
-// import Testimonials from "../../components/testimonials/Testimonials";
-// import CourseFeatures from "../../components/coursefeatures/coursefeatures";
-// import WhyChooseUs from "../../components/whychooseus/Whychooseus";
-// import FAQSection from "../../components/FAQSection/FAQSection";
-
-// const Home = () => {
-//   const navigate = useNavigate();
-//   const text = "Welcome to our E-learning Platform"; 
-//   const [displayedText, setDisplayedText] = useState(""); 
-//   const [index, setIndex] = useState(0);
-
-//   useEffect(() => {
-//     if (index < text.length) {
-//       const timeout = setTimeout(() => {
-//         setDisplayedText((prev) => prev + text[index]);
-//         setIndex(index + 1);
-//       }, 100); // Speed of typing effect
-//       return () => clearTimeout(timeout);
-//     }
-//   }, [index, text]);
-
-//   return (
-//     <div>
-//       <section className="home flex flex-col items-center justify-center h-screen text-white text-center p-6">
-//         <div className="home-content">
-//           <h1 className="text-5xl font-bold mb-4 typing-text">{displayedText}</h1>
-//           <p className="text-lg mb-6 max-w-2xl">Learn, Grow, Excel</p>
-//           <button 
-//             onClick={() => navigate("/courses")} 
-//             className="common-btn"
-//           >
-//             Get Started
-//           </button>
-//         </div>
-//       </section>
-//       <CourseFeatures />
-//       <Testimonials />
-//       <WhyChooseUs />
-//       <FAQSection />
-//     </div>
-//   );
-// };
-
-// export default Home;
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import TextTransition, { presets } from "react-text-transition"; // Import TextTransition
 import "./home.css";
 import Testimonials from "../../components/testimonials/Testimonials";
 import CourseFeatures from "../../components/coursefeatures/coursefeatures";
@@ -112,25 +64,25 @@ import FAQSection from "../../components/FAQSection/FAQSection";
 
 const Home = () => {
   const navigate = useNavigate();
-  const text = "Welcome to our E-learning Platform"; 
+  const text = "Welcome to our Edu-Adapt"; 
+  const [displayedText, setDisplayedText] = useState(""); 
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => prev + 1);
-    }, 100); // Adjust speed here (100ms per letter)
-    return () => clearInterval(interval);
-  }, []);
+    if (index < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText((prev) => prev + text[index]);
+        setIndex(index + 1);
+      }, 100); // Speed of typing effect
+      return () => clearTimeout(timeout);
+    }
+  }, [index, text]);
 
   return (
     <div>
       <section className="home flex flex-col items-center justify-center h-screen text-white text-center p-6">
         <div className="home-content">
-          <h1 className="animated-text">
-            <TextTransition springConfig={presets.gentle}>
-              {text.substring(0, index)}
-            </TextTransition>
-          </h1>
+          <h1 className="text-5xl font-bold mb-4 typing-text">{displayedText}</h1>
           <p className="text-lg mb-6 max-w-2xl">Learn, Grow, Excel</p>
           <button 
             onClick={() => navigate("/courses")} 

@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { server } from "../../main";
 
+
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [btnLoading, setBtnLoading] = useState(false);
@@ -23,6 +24,7 @@ const ForgotPassword = () => {
       toast.error(error.response.data.message);
       setBtnLoading(false);
     }
+   
   };
   return (
     <div className="auth-page">

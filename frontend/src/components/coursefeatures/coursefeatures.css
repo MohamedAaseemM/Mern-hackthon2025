@@ -1,13 +1,14 @@
 /* Gradient animation for background */
-@keyframes gradientAnimation {
+ @keyframes gradientAnimation {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
+} 
 
 /* Main section */
-.course-features {
-  background: linear-gradient(-45deg, #dbeafe, #eff6ff, #dbeafe, #c3ddfd);
+.course-features1 {
+  background: linear-gradient(to right,#f2f2f9 , #e9f5f5);
+  color: #004080;
   background-size: 300% 300%;
   animation: gradientAnimation 6s ease infinite;
   padding: 60px 20px;
@@ -17,13 +18,13 @@
 }
 
 /* Container for proper spacing */
-.container {
+.container1 {
   max-width: 1100px;
   margin: 0 auto;
 }
 
 /* Title styling */
-.title {
+.title1 {
   font-size: 32px;
   font-weight: bold;
   color: #003366; /* Dark Blue */
@@ -33,14 +34,14 @@
 }
 
 /* Subtitle styling */
-.subtitle {
+.subtitle1 {
   font-size: 18px;
   color: #00509e;
   margin-bottom: 30px;
 }
 
 /* Grid layout for features */
-.features-grid {
+.features-grid1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
@@ -48,8 +49,7 @@
 }
 
 /* Feature card styling */
-.feature-item {
-  background: rgba(255, 255, 255, 0.8);
+.feature-item1 {
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -60,26 +60,26 @@
 }
 
 /* Hover effect */
-.feature-item:hover {
+.feature-item1:hover {
   transform: translateY(-5px);
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Feature title */
-.feature-item h3 {
+.feature-item1 h3 {
   font-size: 20px;
   color: #004080; /* Slightly darker blue */
   margin-bottom: 10px;
 }
 
 /* Feature description */
-.feature-item p {
+.feature-item1 p {
   font-size: 16px;
   color: #0056b3;
 }
 
 /* Gradient hover overlay */
-.feature-item::before {
+.feature-item1::before {
   content: "";
   position: absolute;
   top: 0;
@@ -91,13 +91,13 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.feature-item:hover::before {
+.feature-item1:hover::before {
   opacity: 1;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .features-grid {
+  .features-grid1 {
     grid-template-columns: 1fr;
   }
 }

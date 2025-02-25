@@ -1,56 +1,89 @@
-.why-choose-us {
-    background: linear-gradient(to right,#23395B , #38A3A5);
-    padding: 80px 20px;
-    text-align: center;
-    color: #fff;
-  }
+/* 🎭 Title & Subtitle Reveal Animation */
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+conta
+.title {
   
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-  
-  .subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    font-weight: 300;
-  }
-  
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: slideInLeft 1s ease-out forwards;
+}
+.why-choose-us{
+  padding: 20px;
+  background: linear-gradient(to right,#f2f2f9 , #e9f5f5);
+}
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  font-weight: 300;
+  opacity: 0;
+  animation: slideInRight 1s ease-out 0.5s forwards;
+}
+/* 🎯 Bounce Entry for Feature Items */
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  60% { opacity: 1; transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.feature-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: bounceIn 1s ease-out forwards;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 🔄 Hover Tilt Effect */
+.feature-item:hover {
+  transform: scale(1.05) rotateX(5deg) rotateY(5deg);
+}
+
+/* ✨ Pulsing Glow Effect */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
+  100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.4); }
+}
+
+.feature-item:hover {
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+/* 🌀 Hover Animation for Feature Titles */
+@keyframes titleHover {
+  0% { letter-spacing: 0px; }
+  50% { letter-spacing: 2px; }
+  100% { letter-spacing: 0px; }
+}
+
+.feature-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ffd700;
+  transition: letter-spacing 0.3s ease-in-out;
+}
+
+.feature-item:hover h3 {
+  animation: titleHover 1s infinite alternate;
+}
+
+/* 📱 Responsive Adjustments */
+@media (max-width: 768px) {
   .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr;
   }
-  
-  .feature-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .feature-item:hover {
-    transform: scale(1.05);
-  }
-  
-  .feature-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #ffd700;
-  }
-  
-  .feature-item p {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.6;
-  }
-  
+}

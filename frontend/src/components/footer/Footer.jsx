@@ -11,7 +11,7 @@ const Footer = () => {
     <footer>
       <div className="footer-content">
         <p>
-          &copy; 2025 Your E-Learning Platform. All rights reserved. <br /> Made
+          &copy; 2025 Your Edu-Adapt Platform. All rights reserved. <br /> Made
           by TEAM_TEK <a href=""></a>
         </p>
         <div className="social-links">
