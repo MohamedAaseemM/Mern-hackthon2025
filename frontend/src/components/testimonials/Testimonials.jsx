@@ -155,7 +155,7 @@ const Testimonials = () => {
       message:
         "Configured .env variables and handled server-side errors.Fixed dependency issues.Deployed the project on Netlify/Vercel.Tested and debugged API calls using Postman & console logs",
       image:
-      "https://media-hosting.imagekit.io//ae516b182b174764/WhatsApp%20Image%202025-02-25%20at%2012.14.48_5d6f50c6.jpg?Expires=1835074085&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=0LcNAO6Qh~oBhEXdaGz7YIcNPwqTEmsXAysK0ANm5KM6-V6fg2fhoh1qaiWmXmiYGQguVCex~c-EwTMktlfBYkxnVuwPdvxXSaJXWZbu2qfnsbQ6HFaVqUkA7bboYgI9d1oh7xVb9LiVKr~rwMcbp2ATw1KLAEP4bjdKkIEmhlbD7RQoND~EqjYCJT7cCLq8RRsrSUgaag0wgdkiuUbVn8UpZ1sBPnN3NFBhTLH8k2ItmpLLj8oWvQ0L2ElZIL~uRjna-X52fheW-KmHS0lXLTT-bMJBdfpRRy4T3TQUT~oRzCFs618A-qgYukgHY1Uaiy1zFmsQ0JiYvazaKl2SxQ__",
+      "https://media-hosting.imagekit.io//45a455c7bb094b83/WhatsApp%20Image%202025-02-25%20at%2012.41.51_4f3ddffc.jpg?Expires=1835075547&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=kYqj02zFFxphJWtRcfGD3WqnY-Rj948jblWvMri5NVzs~R~ryFsBWQnb4Yz~LhIbdNL-3J1K9bWhpjCH1x7uGi1iks-FIDjZ~7to1FTC52ihqxNcsvhaHWt8teZpEs120n4R20FZxsbD1ntAhBEt49WiWsx~y89hOWFo98Yuv-bjoqi7wrQDK4S4wduZhoW~E8fb-HOnklp0O4Nl6Lz6CibOjxgESPv3GwQw63y9X5wnERYIWtDHldVUMGnnw7qynJux9vsd4jAeJfLLPdwOOlu12vIbpse-yV~Wvg8GLmZElA7wxHeqsvY22MIJBadZQy4jUPuqbeAbsVz7vjMJmQ__",
     }
   ];
 

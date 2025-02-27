@@ -17,8 +17,8 @@ const Lecture = ({ user }) => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [video, setvideo] = useState("");
-  const [videoPrev, setVideoPrev] = useState("");
+  const [file, setFile] = useState("");
+  const [filePrev, setFilePrev] = useState("");
   const [btnLoading, setBtnLoading] = useState(false);
 
   if (user && user.role !== "admin" && !user.subscription.includes(params.id))
@@ -27,9 +27,7 @@ const Lecture = ({ user }) => {
   async function fetchLectures() {
     try {
       const { data } = await axios.get(`${server}/api/lectures/${params.id}`, {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
+        headers: { token: localStorage.getItem("token") },
       });
       setLectures(data.lectures);
       setLoading(false);
@@ -43,9 +41,7 @@ const Lecture = ({ user }) => {
     setLecLoading(true);
     try {
       const { data } = await axios.get(`${server}/api/lecture/${id}`, {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
+        headers: { token: localStorage.getItem("token") },
       });
       setLecture(data.lecture);
       setLecLoading(false);
@@ -55,15 +51,14 @@ const Lecture = ({ user }) => {
     }
   }
 
-  const changeVideoHandler = (e) => {
+  const changeFileHandler = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
 
     reader.readAsDataURL(file);
-
     reader.onloadend = () => {
-      setVideoPrev(reader.result);
-      setvideo(file);
+      setFilePrev(reader.result);
+      setFile(file);
     };
   };
 
@@ -74,17 +69,13 @@ const Lecture = ({ user }) => {
 
     myForm.append("title", title);
     myForm.append("description", description);
-    myForm.append("file", video);
+    myForm.append("file", file);
 
     try {
       const { data } = await axios.post(
         `${server}/api/course/${params.id}`,
         myForm,
-        {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        }
+        { headers: { token: localStorage.getItem("token") } }
       );
 
       toast.success(data.message);
@@ -93,8 +84,8 @@ const Lecture = ({ user }) => {
       fetchLectures();
       setTitle("");
       setDescription("");
-      setvideo("");
-      setVideoPrev("");
+      setFile("");
+      setFilePrev("");
     } catch (error) {
       toast.error(error.response.data.message);
       setBtnLoading(false);
@@ -105,9 +96,7 @@ const Lecture = ({ user }) => {
     if (confirm("Are you sure you want to delete this lecture")) {
       try {
         const { data } = await axios.delete(`${server}/api/lecture/${id}`, {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
+          headers: { token: localStorage.getItem("token") },
         });
 
         toast.success(data.message);
@@ -118,83 +107,49 @@ const Lecture = ({ user }) => {
     }
   };
 
-  const [completed, setCompleted] = useState("");
-  const [completedLec, setCompletedLec] = useState("");
-  const [lectLength, setLectLength] = useState("");
-  const [progress, setProgress] = useState([]);
-
-  async function fetchProgress() {
-    try {
-      const { data } = await axios.get(
-        `${server}/api/user/progress?course=${params.id}`,
-        {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        }
-      );
-
-      setCompleted(data.courseProgressPercentage);
-      setCompletedLec(data.completedLectures);
-      setLectLength(data.allLectures);
-      setProgress(data.progress);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  const addProgress = async (id) => {
-    try {
-      const { data } = await axios.post(
-        `${server}/api/user/progress?course=${params.id}&lectureId=${id}`,
-        {},
-        {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        }
-      );
-      console.log(data.message);
-      await fetchProgress();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  console.log(progress);
-
   useEffect(() => {
     fetchLectures();
-    fetchProgress();
   }, []);
+
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
         <>
-          <div className="progress">
-            Lecture completed - {completedLec} out of {lectLength} <br />
-            <progress value={completed || 0} max={100}></progress> {completed ? completed.toFixed(2) : 0} %
-          </div>
           <div className="lecture-page">
             <div className="left">
               {lecLoading ? (
                 <Loading />
               ) : (
                 <>
-                  {lecture.video ? (
+                  {lecture.file ? (
                     <>
-                      <video
-                        src={`${server}/${lecture.video}`}
-                        width={"100%"}
-                        controls
-                        controlsList="nodownload noremoteplayback"
-                        disablePictureInPicture
-                        disableRemotePlayback
-                        autoPlay
-                        onEnded={() => addProgress(lecture._id)}
-                      ></video>
+                      {lecture.file.endsWith(".mp4") ? (
+                        <video
+                          src={`${server}/${lecture.file}`}
+                          width={"100%"}
+                          controls
+                          autoPlay
+                        ></video>
+                      ) : lecture.file.endsWith(".pdf") ? (
+                        <iframe
+                          src={`${server}/${lecture.file}`}
+                          width="100%"
+                          height="500px"
+                        ></iframe>
+                      ) : lecture.file.endsWith(".ppt") ||
+                        lecture.file.endsWith(".pptx") ? (
+                        <a
+                          href={`${server}/${lecture.file}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View Presentation
+                        </a>
+                      ) : (
+                        <p>Unsupported file format</p>
+                      )}
                       <h1>{lecture.title}</h1>
                       <h3>{lecture.description}</h3>
                     </>
@@ -233,18 +188,17 @@ const Lecture = ({ user }) => {
 
                     <input
                       type="file"
-                      placeholder="choose video"
-                      onChange={changeVideoHandler}
+                      accept=".mp4,.pdf,.ppt,.pptx"
+                      onChange={changeFileHandler}
                       required
                     />
 
-                    {videoPrev && (
-                      <video
-                        src={videoPrev}
-                        alt=""
-                        width={300}
-                        controls
-                      ></video>
+                    {filePrev && (
+                      file.name.endsWith(".mp4") ? (
+                        <video src={filePrev} width={300} controls></video>
+                      ) : (
+                        <p>File ready for upload</p>
+                      )
                     )}
 
                     <button
@@ -258,30 +212,16 @@ const Lecture = ({ user }) => {
                 </div>
               )}
 
-              {lectures && lectures.length > 0 ? (
+              {lectures.length > 0 ? (
                 lectures.map((e, i) => (
-                  <>
+                  <div key={i}>
                     <div
                       onClick={() => fetchLecture(e._id)}
-                      key={i}
                       className={`lecture-number ${
-                        lecture._id === e._id && "active"
+                        lecture._id === e._id ? "active" : ""
                       }`}
                     >
-                      {i + 1}. {e.title}{" "}
-                      {progress[0] &&
-                        progress[0].completedLectures.includes(e._id) && (
-                          <span
-                            style={{
-                              background: "red",
-                              padding: "2px",
-                              borderRadius: "6px",
-                              color: "greenyellow",
-                            }}
-                          >
-                            <TiTick />
-                          </span>
-                        )}
+                      {i + 1}. {e.title}
                     </div>
                     {user && user.role === "admin" && (
                       <button
@@ -292,7 +232,7 @@ const Lecture = ({ user }) => {
                         Delete {e.title}
                       </button>
                     )}
-                  </>
+                  </div>
                 ))
               ) : (
                 <p>No Lectures Yet!</p>
@@ -304,4 +244,5 @@ const Lecture = ({ user }) => {
     </>
   );
 };
+
 export default Lecture;

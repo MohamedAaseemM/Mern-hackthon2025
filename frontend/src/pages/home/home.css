@@ -38,7 +38,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(to right,#6A11CB , #357dfa); /* Gold to Dark gradient */
+  background: linear-gradient(to right,purple , #639bfc); /* Gold to Dark gradient */
   color: white;
   text-align: center;
   padding: 1.5rem;

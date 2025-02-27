@@ -31,3 +31,26 @@
     margin-bottom: 5px;
   }
 }
+/* 📌 Styling for Course Level */
+.course-level {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px 10p;
+  border-radius: 5px;
+  display: inline-block;
+  color: #fff;
+  margin-top: 5px;
+}
+
+/* Colors based on level */
+.course-level.easy {
+  background-color: #28a745; /* Green */
+}
+
+.course-level.medium {
+  background-color: #ffc107; /* Yellow */
+}
+
+.course-level.hard {
+  background-color: #dc3545; /* Red */
+}
